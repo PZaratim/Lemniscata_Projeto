@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 48,
+      "left": -23.96,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -123.3,
+      "left": -148.1,
+      "attrs": { "distance": "400" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -114.9,
+      "left": 109.8,
+      "attrs": { "temperature": "45.8", "humidity": "46" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 156.8,
+      "left": -296.8,
+      "attrs": {}
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 25.2, "left": 176.6, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "h-9.6", "v278.4" ] ],
+    [ "ultrasonic1:GND", "esp:GND.2", "black", [ "h123.6", "v105.6" ] ],
+    [ "ultrasonic1:ECHO", "esp:18", "green", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "esp:5", "cyan", [ "v0" ] ],
+    [ "dht1:SDA", "esp:4", "yellow", [ "v0" ] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "esp:GND.2", "dht1:GND", "black", [ "h76.8" ] ],
+    [ "ldr1:VCC", "esp:5V", "red", [ "h38.4", "v76.8" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "v-144.4", "h192" ] ],
+    [ "ldr1:AO", "esp:34", "purple", [ "h86.4", "v-87.1" ] ],
+    [ "esp:GND.2", "led1:C", "black", [ "v0" ] ],
+    [ "led1:A", "esp:2", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
